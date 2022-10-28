@@ -1,0 +1,403 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PLACEMENT PORTAL</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+  <script src="js/jquery-1.8.2.min.js"></script>
+  <link rel="stylesheet" href="js/index.css">
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script>
+    $(document).ready(function () {
+
+      $("#sendsignup").click(function () {
+        var url = "/signup?txtEmail=" + $("#txtEmail").val() + "&&txtNo=" + $("#txtNo").val() + "&&txtPass=" + $("#txtPass").val();
+        $.get(url, function (resp) {
+          alert(resp);
+        })
+      })
+      $("#sendlogin").click(function () {
+        // alert("hi");
+        var url = "/login?loginNo=" + $("#loginNo").val() + "&&loginPassword=" + $("#loginPassword").val();
+        $.getJSON(url, function (jsonobject) {
+          if (jsonobject.length == 0) {
+            alert("Invalid Email/Password or Expired");
+          }
+          else {
+            localStorage.setItem("activeUser", $("#loginNo").val());
+            window.location.replace("/dash_student.html");
+
+
+          }
+        })
+      })
+
+      //sendloginOfficer
+      $("#sendloginOfficer").click(function () {
+        var url = "/loginadmin?loginOEmail=" + $("#loginOEmail").val() + "&&loginOPassword=" + $("#loginOPassword").val();
+        $.getJSON(url, function (jsonobject) {
+          if (jsonobject.length == 0) {
+            alert("Invalid Email/Password or Expired");
+          }
+          else {
+            localStorage.setItem("activeUser", $("#loginOEmail").val());
+            window.location.replace("/dash_placementofficer.html");
+
+
+          }
+        })
+      })
+
+    })
+  </script>
+  <script type="text/javascript">
+    google.charts.load('current', { 'packages': ['corechart'] });
+    google.charts.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+
+      var data = google.visualization.arrayToDataTable([
+        ['Task', 'Hire'],
+        ['Google', 3],
+        ['Microsoft', 6],
+        ['IBM', 2],
+        ['Air India', 4],
+        ['Amazon', 8]
+      ]);
+
+      var options = {
+        title: 'Comapnies Visit '
+      };
+
+      var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+      chart.draw(data, options);
+    }
+    
+
+  </script>
+
+
+
+
+</head>
+
+<body>
+
+  <!-- <i class="fa-solid fa-user fa-5x"></i> -->
+  <nav class="navbar navbar-success bg-success">
+    <!-- Navbar content -->
+    <div class="m-1">
+      <img src="media/20221013_000251_0000.png" alt="" width="84" height="72" style="margin:-15px -10px;  ">
+      <span class="navbar-brand mb-0 h1"
+        style="color: white;margin-left:45px; font-size: 30px; font-family:Georgia, 'Times New Roman', Times, serif ;">UNIVERSITY
+        OF INDIA</span>
+    </div>
+
+    <div>
+      <form class="container-fluid gap-3 d-flex justify-content-end">
+
+        <button type="button" id="signupbtn" class="btn btn-outline-light" data-bs-toggle="modal"
+          data-bs-target="#signup">
+          SIGN UP AS A STUDENT
+        </button>
+      </form>
+    </div>
+    </div>
+  </nav>
+
+
+  <!-- ======================  -->
+
+  <div class="container-fluid" style="background-color: rgb(242, 236, 236); margin-top: 10px; "
+    style="height: 500px; height: 8px;  ">
+
+    <div class="col-d-6">
+      <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+            aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+            aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+            aria-label="Slide 3"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3"
+            aria-label="Slide 4"></button>
+        </div>
+        <div class="carousel-inner " style="height: 600px;">
+          <div class="carousel-item active">
+            <img src="media/uni1.jpg" class="d-block w-100 op1" alt="...">
+          </div>
+          <div class="carousel-item">
+            <img src="media/uni3.jpg" class="d-block w-100 op1" alt="...">
+          </div>
+          <div class="carousel-item">
+            <img src="media/uni4.jpg" class="d-block w-100 op1" alt="...">
+          </div>
+          <div class="carousel-item">
+            <img src="media/uni.4.jpg" class="d-block w-100 op1" alt="...">
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+          data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+          data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- cards -->
+
+  <div class="container" style="margin-top: -520px; margin-left: 75px; ">
+    <div class="row">
+      <div class="container d-flex justify-content-center mt-1">
+        <!--  -->
+        <div class="card border border-success border-2 mt-5 col-md-3 op2">
+          <img src="media/s2.png" class="card-img-top " style="margin-top: 10px; padding: 39px;" width="70%"
+            height="57%" alt="..."> <br>
+          <div class="card-body">
+            <center>
+              <h5 class="card-title"> PLACEMENT PORTAL FOR STUDENTS</h5><br>
+              <a href="" id="loginbtn" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#login">LOGIN
+                HERE</a>
+            </center>
+          </div>
+        </div>
+
+        <!--  -->
+        <div class="card border border-success border-2 mt-5 col-md-3 op2">
+          <img src="media/i2.png" class="card-img-top" style="margin-top: 10px; padding: 35px;" width="70%" height="57%"
+            alt="..."> <br>
+          <div class="card-body">
+            <center>
+              <h5 class="card-title"> PLACEMENT PORTAL FOR OFFICERS</h5> <br>
+              <a href="" id="" data-bs-toggle="modal" data-bs-target="#loginOfficer" class="btn btn-success">LOGIN
+                HERE</a>
+            </center>
+          </div>
+        </div>
+
+        <!--  -->
+        <!--  -->
+        <div class="card border border-success border-2 mt-5 col-md-3 op2">
+          <img src="media/i3.png" class="card-img-top" style="margin-top: 10px; padding: 34px;" width="50%" height="57%"
+            alt="..."> <br>
+          <div class="card-body">
+            <center>
+              <h5 class="card-title"> ONLINE CLASSES FOR STUDENTS</h5> <br>
+              <a href="" id="logout1" class="btn btn-success">LOGIN HERE</a>
+            </center>
+          </div>
+        </div>
+
+        <!--  -->
+        <!--  -->
+        <div class="card border border-success border-2 mt-5 col-md-3 op2">
+          <img src="media/s5.png" class="card-img-top" style="margin-top: 10px; padding: 40px;" width="50%" height="57%"
+            alt="..."> <br>
+          <div class="card-body">
+            <center>
+              <h5 class="card-title"> ONLINE ASSESSMENT FOR STUDENTS</h5> <br>
+              <a href="" id="logout1" class="btn btn-success">LOGIN HERE</a>
+            </center>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ================ sign up as a student  ----=======================-->
+
+
+
+  <div class="modal fade" id="signup" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Sign Up Here !!</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form class="row g-3" method="get">
+
+            <div class="col-md-12">
+              <label for="txtEmail" class="form-label">Email</label>
+              <input type="email" class="form-control" name="txtEmail" id="txtEmail">
+              <!-- <label class="form-label" id="errEmail">*</label> -->
+            </div>
+            <div class="col-md-6">
+              <label for="txtNo" class="form-label">Registration No.</label>
+              <input type="text" class="form-control" name="txtNo" id="txtNo">
+            </div>
+            <div class="col-md-6">
+              <label for="txtPass" class="form-label">Password</label>
+              <input type="password" class="form-control" name="txtPass" id="txtPass">
+            </div>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-success" id="sendsignup">Sign Up</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ================login as a student========================== -->
+  <!--  -->
+  <div class="modal fade" id="login" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Login here !!</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form class="row g-3">
+            <div class="col-md-12">
+              <label for="txtNo" class="form-label">Registration No.</label>
+              <input type="text" class="form-control" name="loginNo" id="loginNo">
+            </div>
+            <div class="col-md-12">
+              <label for="loginPassword" class="form-label">Password</label>
+              <input type="password" class="form-control" id="loginPassword" name="loginPassword">
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-success" id="sendlogin">Login</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!--========================login as a placemnt officer============= -->
+
+  <div class="modal fade" id="loginOfficer" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Log In</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form class="row g-3">
+            <div class="col-md-12">
+              <label for="loginEmail" class="form-label">Email</label>
+              <input type="email" class="form-control" id="loginOEmail" name="loginOEmail">
+            </div>
+            <div class="col-md-12">
+              <label for="loginPassword" class="form-label">Password</label>
+              <input type="password" class="form-control" id="loginOPassword" name="loginOPassword">
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-success" id="sendloginOfficer">Login</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <div id="pop_up" style="margin-top: -10px;">
+    <center> <br> <br> <br> <br><br> <br> <br> <br> <br>
+      <h2 style="font-family:Georgia, 'Times New Roman', Times, serif; font-size: 42px;">OUR GALLERY</h2>
+      <hr>
+      <marquee loop="9" scrollamount="15" behavior="" direction="left" style="margin-top: 30px;">
+
+        <img src="media/st1.jpg" alt="" width="350px" height="260px" style="border-radius: 100% ;"> &nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <img src="media/st3.jpg" alt="" width="350px" height="260px" style="border-radius: 100% ;"> &nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <img src="media/st2" alt="" width="350px" height="260px" style="border-radius: 100% ;"> &nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <img src="media/st4.jpg" alt="" width="350px" height="260px" style="border-radius: 100% ;"> &nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <img src="media/st5.jpg" alt="" width="350px" height="260px" style="border-radius: 100% ;"> &nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <img src="media/st6.jpg" alt="" width="350px" height="260px" style="border-radius: 100% ;"> &nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <img src="media/st7.jpg" alt="" width="350px" height="260px" style="border-radius: 100% ;">
+
+
+
+      </marquee> <br> <br>
+      <hr>
+    </center>
+  </div>
+  <!-- ===================================================================== -->
+  <div>
+    <center>
+      <div id="piechart" style="width: 900px; height: 370px;  margin-right: -50px; margin-top: 100px;">
+      </div>
+    </center>
+  </div>
+  <div class="row" style="background-color: rgb(246, 249, 245);">
+
+    <div class="card mt-5 col-md-6">
+      <div class="card-body" style=" margin-top: -28px;">
+
+        <video controls loop width="600" height="330" src="media/video.mp4" type="video/mp4" style="margin-top:20px;">
+        </video>
+
+      </div>
+    </div>
+
+
+
+    <div class="card mt-5 col-md-5">
+      <div class="card-body">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3410.7263991098725!2d75.7029548145047!3d31.2559965672774!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391a5f5e9c489cf3%3A0x4049a5409d53c300!2sLovely%20Professional%20University!5e0!3m2!1sen!2sin!4v1666606797678!5m2!1sen!2sin"
+          width="500" height="320" style="border:0;" allowfullscreen="" loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+      </div>
+    </div>
+  </div>
+  <div class="footer" style="background-color: rgb(56, 135, 91); height:120px; margin-top: 30px;">
+    <span style="color: white; font-size: 20px; font-family:Georgia, 'Times New Roman', Times, serif ;">
+      <p>
+        <center>
+          <br>
+          <h6>copyright <i class="fa fa-copyright fa-1x" aria-hidden="true"></i> 2020-2024</h6>
+          <span style="font-size: 15px;">
+          About | Privacy Policy | Cookie Policy | Update Consent | Terms & Conditions | Editorial Guidelines |
+          Affiliate Disclosure | Contact Us
+          </span>
+          <h6>
+            <i class="fa fa-facebook-official fa-1x" aria-hidden="true"></i>
+            <i class="fa fa-instagram fa-1x" aria-hidden="true"></i>
+            <i class="fa fa-twitter-square fa-1x" aria-hidden="true"></i>
+            <i class="fa fa-linkedin-square fa-1x" aria-hidden="true"></i>
+          </h6>
+          
+        </center>
+      </p>
+    </span>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>

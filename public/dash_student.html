@@ -1,0 +1,359 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bootstrap demo</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+  <script src="js/jquery-1.8.2.min.js"></script>
+  <script src="js/angular.min.js"></script>
+  <style>
+    .card {
+      margin-left: 24px;
+      /* margin-top: 250px; */
+      height: 350px;
+    }
+
+    .card-body a:hover {
+      background-color: rgb(186, 193, 189);
+      color: black;
+
+    }
+
+    .modal-footer button:hover {
+      background-color: rgb(182, 180, 180);
+      color: black;
+    }
+
+    #log {
+      text-decoration: none;
+      color: white;
+    }
+
+    #log:hover {
+      background-color: rgb(186, 193, 189);
+      color: black;
+    }
+  </style>
+  <script>
+    var moduleKuch = angular.module("myModule", []);
+
+
+
+    moduleKuch.controller("myController", function ($scope, $http) {
+      $scope.jsonAry = [];
+
+      //showdDetails
+      $scope.showdDetails = function (studentemail) {
+
+        $http.get("/contactDonor?studentemail=" + studentemail).then(fxSuccess, function (response) {
+          alert(JSON.stringify(response.data));
+        });
+        function fxSuccess(response) {
+          alert(JSON.stringify(response.data));
+          $scope.jsonDetails = response.data;
+
+        }
+      }
+
+    })
+
+
+
+  </script>
+</head>
+
+<body ng-app="myModule" ng-controller="myController">
+
+
+  <nav class="navbar navbar-success bg-success">
+
+    <div class="m-1">
+      <img src="media/20221013_000251_0000.png" alt="" width="84" height="72" style="margin:-15px -10px;  ">
+      <span class="navbar-brand mb-0 h1"
+        style="color: white;margin-left:45px; font-size: 30px; font-family:Georgia, 'Times New Roman', Times, serif ;">PLACEMENT
+        PORTAL FOR STUDENTS</span>
+    </div>
+
+    <div>
+      <form class="container-fluid gap-3 d-flex justify-content-end">
+        <button type="button" id="signbtn" class="btn btn-outline-light" data-bs-toggle="modal"
+          data-bs-target="#setting">
+          CHANGE PASSWORD
+        </button>
+
+
+        <a href="index.html" id="log">
+          <button type="button" id="loginbtn" class="btn btn-outline-light" data-bs-toggle="modal"
+            data-bs-target="#login">
+            LOGOUT
+          </button>
+
+        </a>
+      </form>
+    </div>
+
+
+
+
+
+  </nav>
+
+
+  <!-- cards -->
+
+  <div class="container-fluid" style="background-color: rgb(238, 246, 240) ;">
+    <div class="row">
+      <div class="container d-flex justify-content-center mt-1">
+        <!--  -->
+        <div class="card border border-success border-2 mt-5 col-md-3">
+          <img src="media/s1.png" class="card-img-top" style="margin-top: 10px; padding: 50px;" width="78%" height="64%"
+            alt="..."> <br>
+          <div class="card-body">
+            <center>
+              <h5 class="card-title">COMPLETE REGISTRATION</h5> <br>
+
+              <!-- <a href="" id="logout1" class="btn btn-dark">LOGIN HERE</a> -->
+              <a href="student_registration.html" id="" class="btn btn-success">CLICK HERE</a>
+            </center>
+          </div>
+        </div>
+
+        <!--  -->
+        <div class="card border border-success border-2 mt-5 col-md-3">
+          <img src="media/s2.png" class="card-img-top" style="margin-top: 10px; padding: 50px;" width="60%" height="64%"
+            alt="..."> <br>
+          <div class="card-body">
+            <center>
+              <h5 class="card-title"> VIEW YOUR PROFILE</h5> <br>
+              <button type="button" ng-click="showdDetails('supritivats123@gmail.com');" class="btn btn-success"
+                data-bs-toggle="modal" data-bs-target="#viewprofile">CLICK HERE</button>
+              <!-- <a href="" id="" ng-click="showdDetails(obj.studentemail);"  class="btn btn-success" data-bs-toggle="modal" data-bs-target="#viewprofile">CLICK HERE</a> -->
+            </center>
+          </div>
+        </div>
+
+        <!--  -->
+        <!--  -->
+        <div class="card border border-success border-2 mt-5 col-md-3">
+          <img src="media/s3.png" class="card-img-top" style="margin-top: 10px; padding: 50px;" width="45%" height="64%"
+            alt="..."> <br>
+          <div class="card-body">
+            <center>
+              <h5 class="card-title"> VIEW ANNOUNCEMENT</h5> <br>
+              <a href="student_view_announcement.html" id="" class="btn btn-success">CLICK HERE</a>
+            </center>
+          </div>
+        </div>
+
+        <!--  -->
+
+
+        <!--  -->
+
+      </div>
+    </div>
+  </div>
+
+  <!--  -->
+  <div class="container-fluid" style="background-color:  rgb(238, 246, 240) ;">
+    <div class="row">
+      <div class="container d-flex justify-content-center mt-1">
+
+        <!--  -->
+        <div class="card border border-success border-2 mt-5 col-md-3">
+          <img src="media/s4.png" class="card-img-top" style="margin-top: 10px; padding: 50px;" width="45%" height="64%"
+            alt="..."> <br>
+          <div class="card-body">
+            <center>
+              <h5 class="card-title">KNOW UPCOMING DRIVES</h5> <br>
+              <a href="student_upcoming_drive.html" id="" class="btn btn-success">CLICK HERE</a>
+            </center>
+          </div>
+        </div>
+
+        <!--  -->
+        <!--  -->
+        <div class="card border border-success border-2 mt-5 col-md-3">
+          <img src="media/s5.png" class="card-img-top" style="margin-top: 10px; padding: 50px;" width="50%" height="64%"
+            alt="..."> <br>
+          <div class="card-body">
+            <center>
+              <h5 class="card-title"> DRIVE REGISTRATION</h5> <br>
+              <a href="student_drive_registeration.html" id="" class="btn btn-success">CLICK HERE</a>
+            </center>
+          </div>
+        </div>
+
+        <!--  -->
+        <!--  -->
+        <div class="card border border-success border-2 mt-5 col-md-3">
+          <img src="media/s6.png" class="card-img-top" style="margin-top: 10px; padding: 50px;" width="50%" height="65%"
+            alt="..."> <br>
+          <div class="card-body">
+            <center>
+              <h5 class="card-title">VIEW THE SUMMARY </h5> <br>
+              <a href="student_view_summary.html" id="" class="btn btn-success">CLICK HERE</a>
+            </center>
+          </div>
+        </div>
+
+        <!--  -->
+
+      </div>
+    </div>
+  </div>
+
+
+  <!--  -->
+  <!-- model of contact donor -->
+  <!-- Modal  ng-repeat="obj in jsonDetails"-->
+
+  <div class="modal fade" id="viewprofile" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">View Profile</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div ng-repeat="obj in jsonDetails">
+            <form class="row g-3">
+              <div class="col-md-8">
+                <label for="loginEmail" class="form-label">Name</label>
+                <input type="text" value="{{obj.name}}" class="form-control" id="loginEmail" name="loginEmail">
+              </div>
+              <div class="col-md-4">
+                <label for="loginEmail" class="form-label">Registration No</label>
+                <input type="email" value="{{obj.regno}}" class="form-control" id="loginEmail" name="loginEmail">
+              </div>
+              <div class="col-md-12">
+                <label for="loginEmail" class="form-label">Email</label>
+                <input type="email" value="{{obj.studentemail}}" class="form-control" id="loginEmail" name="loginEmail">
+              </div>
+
+              <div class="col-md-6">
+                <label for="loginEmail" class="form-label"> Mobile No.</label>
+                <input type="email" value="{{obj.mobileno}}" class="form-control" id="loginEmail" name="loginEmail">
+              </div>
+              <div class="col-md-6">
+                <label for="loginEmail" class="form-label">Gender</label>
+                <input type="email" value="{{obj.gender}}" class="form-control" id="loginEmail" name="loginEmail">
+              </div>
+              <div class="col-md-6">
+                <label for="loginEmail" class="form-label">Father's Name</label>
+                <input type="email" value="{{obj.fathername}}" class="form-control" id="loginEmail" name="loginEmail">
+              </div>
+              <div class="col-md-6">
+                <label for="loginEmail" class="form-label">DOB</label>
+                <input type="email" value="{{obj.dob}}" class="form-control" id="loginEmail" name="loginEmail">
+              </div>
+              <div class="col-md-12">
+                <label for="loginEmail" class="form-label">Branch</label>
+                <input type="email" value="{{obj.branch}}" class="form-control" id="loginEmail" name="loginEmail">
+              </div>
+
+              <div class="col-md-12">
+                <label for="loginEmail" class="form-label">Address</label>
+                <input type="email" value="{{obj.address}}" class="form-control" id="loginEmail" name="loginEmail">
+              </div>
+              <div class="col-md-6">
+                <label for="loginEmail" class="form-label">State</label>
+                <input type="email" value="{{obj.state}}" class="form-control" id="loginEmail" name="loginEmail">
+              </div>
+
+              <div class="col-md-6">
+                <label for="loginEmail" class="form-label">Country</label>
+                <input type="email" value="{{obj.country}}" class="form-control" id="loginEmail" name="loginEmail">
+              </div>
+              <div class="col-md-6">
+                <label for="loginEmail" class="form-label">Proof Type</label>
+                <input type="email" value="{{obj.idproof}}" class="form-control" id="loginEmail" name="loginEmail">
+              </div>
+              <div class="col-md-6">
+                <label for="loginEmail" class="form-label">Passing Year</label>
+                <input type="email" value="{{obj.passingyear}}" class="form-control" id="loginEmail" name="loginEmail">
+              </div>
+              <div class="col-md-6">
+                <label for="loginEmail" class="form-label">Backlog</label>
+                <input type="email" value="{{obj.backlog}}" class="form-control" id="loginEmail" name="loginEmail">
+              </div>
+              <div class="col-md-6">
+                <label for="loginEmail" class="form-label">Matric(%)</label>
+                <input type="email" value="{{obj.matric}" class="form-control" id="loginEmail" name="loginEmail">
+              </div>
+              <div class="col-md-4">
+                <label for="loginEmail" class="form-label">Diploma(%)</label>
+                <input type="email" value="{{obj.diploma}}" class="form-control" id="loginEmail" name="loginEmail">
+              </div>
+              <div class="col-md-4">
+                <label for="loginEmail" class="form-label">Current Marks(%)</label>
+                <input type="email" value="{{obj.currentmarks}}" class="form-control" id="loginEmail" name="loginEmail">
+              </div>
+              <div class="col-md-4">
+                <label for="loginEmail" class="form-label">Attendance(%)</label>
+                <input type="email" value="{{obj.attendance}}" class="form-control" id="loginEmail" name="loginEmail">
+              </div>
+
+              <div class="col-md-6">
+                <label for="loginEmail" class="form-label">Proof Pic</label>
+                <img src="uploads/{{obj.idpic}}" alt="" width="100" height="100">
+                <!-- <input type="email" value="{{obj.company}}" class="form-control" id="loginEmail" name="loginEmail"> -->
+              </div>
+              <div class="col-md-6">
+                <label for="loginEmail" class="form-label">Profile Pic</label>
+                <img src="uploads/{{obj.profilepic}}" alt="" width="100" height="100">
+              </div>
+          </div>
+
+        </div>
+        <div class="modal-footer">
+          <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!--modal of setting-->
+
+  <div class="modal fade" id="setting" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Setting</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form class="row g-3">
+            <div class="col-md-12">
+              <label for="txtUEmail" class="form-label">Registration No</label>
+              <input type="text" class="form-control" id="" name="">
+            </div>
+            <div class="col-md-12">
+              <label for="txtUPass" class="form-label">Old Password</label>
+              <input type="password" class="form-control" id="txtUPass" name="txtUPass">
+            </div>
+            <div class="col-md-12">
+              <label for="txtNewPass" class="form-label">New Password</label>
+              <input type="password" class="form-control" id="txtNewPass" name="txtNewPass">
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-success" id="update">Update</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!---->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>

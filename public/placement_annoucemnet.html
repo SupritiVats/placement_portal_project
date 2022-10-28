@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <script src="js/jquery-1.8.2.min.js"></script>
+    <script src="js/angular.min.js"></script>
+    
+     <style>
+
+        .col a
+        {
+            text-decoration: none;
+            font-size: 20px;
+
+        }
+    
+     </style>
+</head>
+  <body>
+
+    <!-- navigation  -->
+    <nav class="navbar navbar-success bg-success">
+        <!-- Navbar content -->
+        <div class="m-1">
+            <img src="media/20221013_000251_0000.png" alt="" width="84" height="72" style="margin:-15px -10px;  ">
+            <span class="navbar-brand mb-0 h1"
+                style="color: white;margin-left:45px; font-size: 30px; font-family:Georgia, 'Times New Roman', Times, serif ;">MAKE ANNOUNCEMENT</span>
+        </div>
+         
+        
+    </nav>
+  <!--FORM CONTROL-->
+  <div style="margin-top:80px ;">
+    <div class="container  " style="border: 2px solid green; padding: 20px; ">
+      <form class="row g-3 mt-2  " method="post" enctype="multipart/form-data">
+
+        <div class="col-md-6">
+          <label for="" class="form-label">Title</label>
+          <input type="txt" class="form-control" id="txtTitle" name="txtTitle">
+        </div>
+        <div class="col-md-6">
+          <label for="" class="form-label">Email ID</label>
+          <input type="email" class="form-control" id="txtOemail" name="txtOemail">
+        </div>
+
+        <div class="col-md-12 ">
+          <label for="" class="form-label">Details</label>
+          <textarea class="form-control" aria-label="With textarea" id="txtDetail" name="txtDetail"></textarea>
+        </div>
+        
+        <div class="col-md-4">
+            <label for="" class="form-label">Date</label>
+            <input type="date" class="form-control" id="txtDate" name="txtDate">
+          </div>
+         
+          <div class="col-md-4 ">
+            <label for="inputCity" class="form-label">Category</label> <br>
+            <select id="txtCategory" name="txtCategory" class="form-select" aria-label="Default select example">
+              <option selected>select category</option>
+              <option value="placement">Placement</option>
+              <option value="academic">Academics</option>
+              <option value="co-curricular">co-curricular</option>
+            </select>
+            </div>
+        <div class="col-md-4 ">
+          <label for="inputCity" class="form-label">Uploaded By</label> <br>
+          <select id="txtname" name="txtname" class="form-select" aria-label="Default select example">
+            <option selected>select name</option>
+            <option value="Baljeet Singh">Mr. Baljeet Singh</option>
+            <option value="Richa Sharma">Mrs. Richa Sharma</option>
+            <option value="Varsha Sharma">Mrs. Varsha Sharma</option>
+          </select>
+          </div>
+
+
+<!-- academic details of college -->
+
+
+
+
+        <div class="row mt-2 justify-content-center ">
+
+          <div class="col-md-2 " style="margin-top:40px">
+            <input type="submit" formaction="/annoucement-process" class="btn btn-outline-success form-control"
+              value="Save">
+          </div>
+          <div class="col-md-2 justify-content-end" style="margin-top:40px">
+            <input type="submit" formaction="/annoucement-update" class="btn btn-outline-success form-control"
+              value="Upadte">
+          </div>
+
+        </div>
+      </form>
+    </div>
+
+  </div>
+
+
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+  </body>
+</html>

@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <script src="js/jquery-1.8.2.min.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+    <script src="js/angular.min.js"></script>
+    <style>
+        .card
+        {
+            margin-left: 24px;
+            /* margin-top: 250px; */
+            height: 350px;
+        }
+        .card-body a:hover
+        {
+            background-color:rgb(186, 193, 189);
+            color: black;
+            
+        }
+
+        .modal-footer button:hover{
+            background-color:rgb(182, 180, 180);
+            color: black;
+        }
+      </style> 
+<script type="text/javascript">
+  google.charts.load("current", {packages:["corechart"]});
+  google.charts.setOnLoadCallback(drawChart);
+function drawChart() {
+    var data = google.visualization.arrayToDataTable([
+      ['Task', 'Skills Represent Chart'],
+      ['Analytical', 7],
+      ['Communication', 6],
+      ['Technical',  5],
+      ['Problem Solving', 2],
+      ['Critical Thinking',  4]
+    ]);
+
+    var options = {
+      title: 'Skills Analysis',
+      is3D: true,
+    };
+
+    var chart = new google.visualization.PieChart(document.getElementById('piechart_3d'));
+    chart.draw(data, options);
+  }
+</script>
+<script type="text/javascript">
+    google.charts.load('current', {'packages':['corechart']});
+    google.charts.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+      var data = google.visualization.arrayToDataTable([
+        ['Year', 'Yours', 'Others'],
+        ['2019',  200,      340],
+        ['2020',  270,      210],
+        ['2021',  110,      200],
+        ['2022',  360,       421]
+      ]);
+
+      var options = {
+        title: 'Progess Graph',
+        curveType: 'function',
+        legend: { position: 'bottom' }
+      };
+
+      var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+
+      chart.draw(data, options);
+    }
+  </script>
+       
+</head>
+  <body >
+
+    <!-- navigation  -->
+    <nav class="navbar navbar-success bg-success">
+        <!-- Navbar content -->
+        <div class="m-1">
+            <img src="media/20221013_000251_0000.png" alt="" width="84" height="72" style="margin:-15px -10px;  ">
+            <span class="navbar-brand mb-0 h1"
+                style="color: white;margin-left:45px; font-size: 30px; font-family:Georgia, 'Times New Roman', Times, serif ;">VIEW SUMMARY</span>
+        </div>
+         
+        
+    </nav>
+   <div class="container" >
+    <div class="row">
+        <div  style="margin-top:60px; margin-left: -60px; ">
+            <img src="media/st7.jpg" width="380px" height="300px" alt="" style="border-radius: 90%;">
+            <br> <h3 style="font-family:Georgia, 'Times New Roman', Times, serif ; margin-left: 100px; margin-top: 20px;">SUPRITI VATS <br> &nbsp; &nbsp;&nbsp; 12007319</h3>
+        </div>
+        <div style="margin-top:-200px ; margin-left:500px; width: 600px ; margin-top: -390px;">
+            <table class="table">
+                <thead class="table-success">
+                    <th> DRIVE DETAIL</th>
+                    <th><center>NUMBERS</center></th>
+    
+                </thead>
+                <tbody>
+                <tr>
+                    <td>Total Drives Held</td>
+                    <td><center> 5048</center></td>
+
+                </tr>
+
+                <tr>
+                    <td>Total Drives Eligible For</td>
+                    <td><center>29</center></td>
+
+                </tr>
+                <tr>
+                    <td>Total drives Registered in</td>
+                    <td><center>10</center></td>
+
+                </tr>
+                <tr>
+                    <td>Participated</td>
+                    <td><center>2</center></td>
+
+                </tr>
+                <tr>
+                    <td>Selected</td>
+                    <td><center>0</center></td>
+
+                </tr>
+                <tr>
+                    <!-- <td><center></center></td> -->
+                    <td>Total Must Attend</td>
+                    <td><center>0</center></td>
+
+                </tr>
+                <tr>
+                    <td>Total Must Attend Registered</td>
+                    <td><center>0</center></td>
+
+                </tr>
+                <tr>
+                    <td>Total May Attend</td>
+                    <td><center>29</center></td>
+
+                </tr>
+                <tr>
+                    <td>Total May Attend Registered	</td>
+                    <td><center>10</center></td>
+
+                </tr>
+                </tbody>
+              </table>
+        </div>
+    </div>
+   </div>
+   <hr>
+   <div class="container-fluid">
+    <div class="row">
+        <center>
+            <div style="margin-right:-200px;">
+                <div id="piechart_3d" style="width: 900px; height: 500px;"></div>
+                        </div>
+        </center>
+        <hr>
+        <center>
+            <div>
+                <div id="curve_chart" style="width: 900px; height: 500px"></div>
+            </div>
+        </center>
+    </div>
+   </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+  </body>
+</html>

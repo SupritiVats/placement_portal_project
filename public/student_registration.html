@@ -1,0 +1,303 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bootstrap demo</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+  <script src="js/jquery-1.8.2.min.js"></script>
+  <script>
+    function loadidFile(ref) {
+      var image = document.getElementById('prev');
+      image.src = URL.createObjectURL(ref.files[0]);
+    }
+    function loadpicFile(ref1) {
+      var image1 = document.getElementById('prev1');
+      image1.src = URL.createObjectURL(ref1.files[0]);
+    }
+  </script>
+  <script>
+    $(document).ready(function () {
+
+
+      $("#btnSearch").click(function () {
+        var regno = $("#txtNo").val();
+
+        var url = "/getProfileObject?txtNo=" + regno;
+        $.getJSON(url, function (responseKuchJSONAryObject) // json for getting search all coressponding details
+        {
+          if (responseKuchJSONAryObject.length == 0)
+            alert("Invalid Id");
+          else {
+            alert(JSON.stringify(responseKuchJSONAryObject));
+            //now assign ids to all form controls
+            $("#txtName").val(responseKuchJSONAryObject[0].name);
+            //$("#txtNo").val(responseKuchJSONAryObject[0].regno);
+            $("#txtEmail").val(responseKuchJSONAryObject[0].studentemail);
+            $("#txtMobile").val(responseKuchJSONAryObject[0].mobileno);
+            $("#txtGender").val(responseKuchJSONAryObject[0].gender);
+            $("#txtFName").val(responseKuchJSONAryObject[0].fathername);
+            $("#txtDob").val(responseKuchJSONAryObject[0].dob);
+            $("#txtBranch").val(responseKuchJSONAryObject[0].branch);
+            $("#txtAddr").val(responseKuchJSONAryObject[0].address);
+            $("#txtState").val(responseKuchJSONAryObject[0].state);
+            $("#txtCountry").val(responseKuchJSONAryObject[0].country);
+            $("#idproof").val(responseKuchJSONAryObject[0].idproof);
+            $("#txtYear").val(responseKuchJSONAryObject[0].passingyear);
+            $("#txtBacklog").val(responseKuchJSONAryObject[0].backlog);
+            $("#txtmatric").val(responseKuchJSONAryObject[0].matric);
+            $("#txtdiploma").val(responseKuchJSONAryObject[0].diploma);
+            $("#txtmarks").val(responseKuchJSONAryObject[0].currentmarks);
+            $("#txtatten").val(responseKuchJSONAryObject[0].attendance);
+            $("#prev").prop("src", "uploads/" + responseKuchJSONAryObject[0].idpic);
+            $("#prev1").prop("src", "uploads/" + responseKuchJSONAryObject[0].profilepic);
+            $("#hdn1").val(responseKuchJSONAryObject[0].idpic);
+            $("#hdn2").val(responseKuchJSONAryObject[0].profilepic);
+
+          }
+
+
+        });
+      });
+    });
+  </script>
+
+
+</head>
+
+<body>
+  <!-- navigation  -->
+  <nav class="navbar navbar-success bg-success">
+    <!-- Navbar content -->
+    <div class="m-1">
+      <img src="media/20221013_000251_0000.png" alt="" width="84" height="72" style="margin:-15px -10px;  ">
+      <span class="navbar-brand mb-0 h1"
+        style="color: white;margin-left:45px; font-size: 30px; font-family:Georgia, 'Times New Roman', Times, serif ;">STUDENT'S REGISTRATION FORM</span>
+    </div>
+
+  </nav>
+
+  <!--FORM CONTROL-->
+  <div style="margin-top:20px ;">
+    <div class="container  " style="border: 2px solid green; padding: 20px; ">
+      <form class="row g-3 mt-2  " method="post" enctype="multipart/form-data">
+
+        
+        <div class="col-md-6">
+          <label for="" class="form-label">Name</label>
+          <input type="txt" class="form-control" id="txtName" name="txtName">
+        </div>
+
+        <div class="col-md-3">
+          <label for="" class="form-label">Registration No.</label>
+          <input type="txt" class="form-control" id="txtNo" name="txtNo">
+        </div>
+
+        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+
+        <div class="col-md-2">
+          <label for="" class="form-label"> &nbsp; &nbsp;</label>
+
+          <input type="button" class="btn btn-outline-success form-control" name="btnSearch" id="btnSearch"
+            value="Search">
+
+        </div>
+
+
+        <div class="col-md-6">
+          <label for="inputEmail4" class="form-label">EMAIL ID</label>
+          <input type="email" class="form-control" id="txtEmail" name="txtEmail">
+        </div>
+
+        <div class="col-md-3">
+          <label for="" class="form-label">MOBILE NUMBER</label>
+          <input type="text" class="form-control" id="txtMobile" name="txtMobile">
+        </div>
+
+
+        <div class="col-md-3 ">
+          <label for="inputGen" class="form-label">Gender</label> <br>
+          <select id="txtGender" name="txtGender" class="form-select" aria-label="Default select example">
+            <option selected>select gender</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Female">Prefer not to say</option>
+          </select>
+        </div>
+
+        <div class="col-6">
+          <label for="inputAddress" class="form-label">Father's Name</label>
+          <input type="text" class="form-control" name="txtFName" id="txtFName">
+        </div>
+
+        <div class="col-md-3">
+          <label for="" class="form-label">DATE OF BIRTH</label>
+          <input type="date" class="form-control" id="txtDob" name="txtDob">
+        </div>
+
+        <div class="col-md-3 ">
+          <label for="inputCity" class="form-label"> Branch</label> <br>
+          <select id="txtBranch" name="txtBranch" class="form-select" aria-label="Default select example">
+            <option selected>select branch</option>
+            <option value="Computer Science and Engineering ">Computer Science and Engineering </option>
+            <option value="Mechanical Engineering">Mechanical Engineering</option>
+            <option value="Electrical & Electronics Engineering">Electrical & Electronics Engineering</option>
+            <option value="Civil Engineering">Civil Engineering</option>
+            <option value="Hotel Management">Hotel Management</option>
+            <option value="Tourism">Tourism</option>
+            <option value="Biosciences"> Biosciences</option>
+            <option value="Aerospace Engineering">Aerospace Engineering</option>
+            <option value="Chemical Engineering">Chemical Engineering</option>
+            <option value="Biotechnology Engineering">Biotechnology Engineering</option>
+          </select>
+        </div>
+
+
+        <div class="col-6">
+          <label for="inputAddress" class="form-label">Address</label>
+          <input type="text" class="form-control" name="txtAddr" id="txtAddr">
+        </div>
+        <div class="col-md-3 ">
+          <label for="inputCity" class="form-label"> State</label> <br>
+          <select id="txtState" name="txtState" class="form-select" aria-label="Default select example">
+            <option selected>select state</option>
+            <option value="Bihar">Bihar</option>
+            <option value="Delhi">Delhi</option>
+            <option value="Punjab">Punjab</option>
+            <option value="Goa">Goa</option>
+            <option value="Manipur">Manipur</option>
+            <option value="Haryana">Haryana</option>
+            <option value="Kerala">Kerala</option>
+            <option value="Up">Uttar Pradesh</option>
+            <option value="Lahore">Lahore</option>
+            <option value="Wuhan">Wuhan</option>
+            <option value="London">London</option>
+          </select>
+        </div>
+
+        <div class="col-md-3 ">
+          <label for="inputCity" class="form-label">Country</label> <br>
+          <select id="txtCountry" name="txtCountry" class="form-select" aria-label="Default select example">
+            <option selected>select country</option>
+            <option value="India">India</option>
+            <option value="Pakistan">Pakistan</option>
+            <option value="UAE">UAE</option>
+            <option value="USA">USA</option>
+            <option value="Iran">Iran</option>
+            <option value="Iraq">Iraq</option>
+            <option value="China">China</option>
+            <option value="Malasiya">Malasiya</option>
+          </select>
+        </div>
+
+
+
+
+        <!-- 
+         
+         -->
+        <div class="col-md-6">
+          <label for="inputState" class="form-label">SELECT ID PROOF</label>
+          <select id="idproof" name="idproof" class="form-select">
+            <option selected>Choose...</option>
+            <option value="ADHAAR CARD" selected>ADHAAR CARD</option>
+            <option value="VOTERID CARD">VOTERID CARD</option>
+          </select>
+        </div>
+        <!-- kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk -->
+
+        <div class="col-md-3 ">
+          <label for="inputCity" class="form-label">Passing Year</label> <br>
+          <select id="txtYear" name="txtYear" class="form-select" aria-label="Default select example">
+            <option selected>select year</option>
+            <option value="year1">2022</option>
+            <option value="year2">2023</option>
+            <option value="year3">2024</option>
+            <option value="year4">2025</option>
+          </select>
+        </div>
+
+        <div class="col-md-3">
+          <label for="inputState" class="form-label">Backlog History(currnet)</label>
+          <select id="txtBacklog" name="txtBacklog" class="form-select">
+            <option selected selected>Choose...</option>
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+          </select>
+        </div>
+
+
+        <div class="col-md-3 ">
+          <label for="" class="form-label">MATRIC(%)</label>
+          <input type="text" class="form-control" id="txtmatric" name="txtmatric" placeholder="rounded value">
+        </div>
+        <div class="col-md-3 ">
+          <label for="" class="form-label">10+2 OR DIPLOMA(%)</label>
+          <input type="text" class="form-control" id="txtdiploma" name="txtdiploma" placeholder="rounded value">
+        </div>
+        <div class="col-3">
+          <label for="inputAddress" class="form-label">Current Marks(%) </label>
+          <input type="text" class="form-control" name="txtmarks" id="txtmarks" placeholder="rounded value">
+        </div>
+        <div class="col-md-3 ">
+          <label for="inputCity" class="form-label">Attendence(%)</label> <br>
+          <select id="txtatten" name="txtatten" class="form-select" aria-label="Default select example">
+            <option selected>select percentage</option>
+            <option value="ten">91-100</option>
+            <option value="nine">81-90</option>
+            <option value="eight">71-80</option>
+            <option value="seven">61-70</option>
+          </select>
+        </div>
+
+        <!-- academic details of college -->
+
+
+        <div class="row mt-2">
+          <div class="col-md-4">
+            <label class="form-label">SELECT ID PIC</label><br>
+            <input type="file" id="proofPic" name="proofPic" onchange="loadidFile(this);">
+          </div>
+
+          <div class="col-md-2">
+            <img src="" id="prev" width="100" height="100">
+          </div>
+
+
+
+          <div class="col-md-4">
+            <label class="form-label">SELECT PROFILE PIC </label>
+            <input type="file" id="profilePic" name="profilePic" onchange="loadpicFile(this);">
+          </div>
+
+          <div class="col-md-2">
+            <img src="" id="prev1" width="100" height="100">
+          </div>
+
+        </div>
+
+        <div class="row mt-2 justify-content-center ">
+
+          <div class="col-md-2 " style="margin-top:40px">
+            <input type="submit" formaction="/profile-process" class="btn btn-outline-success form-control"
+              value="Save">
+          </div>
+          <div class="col-md-2 justify-content-end" style="margin-top:40px">
+            <input type="submit" formaction="/profile-update" class="btn btn-outline-success form-control"
+              value="Upadte">
+          </div>
+
+        </div>
+      </form>
+    </div>
+
+  </div>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>
